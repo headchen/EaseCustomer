@@ -1,0 +1,16 @@
+//
+//  EaseBubbleView+Satisfaction.h
+//  ChatDemo-UI3.0
+//
+//  Created by zgsoft on 16/8/23.
+//  Copyright © 2016年 zgsoft. All rights reserved.
+//
+
+#import "EaseBubbleView.h"
+
+@interface EaseBubbleView (Satisfaction)
+
+- (void)setupSatisfactionBubbleView;
+
+- (void)updateTrackMargin:(UIEdgeInsets)margin;
+@end

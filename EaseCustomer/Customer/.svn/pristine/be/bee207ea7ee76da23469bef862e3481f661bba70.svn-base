@@ -1,0 +1,194 @@
+//
+//  EaseBubbleView+Track.m
+//  ChatDemo-UI3.0
+//
+//  Created by zgsoft on 16/8/22.
+//  Copyright © 2016年 zgsoft. All rights reserved.
+//
+
+#import "EaseBubbleView+Track.h"
+#import <objc/runtime.h>
+#import "RedpacketOpenConst.h"
+
+
+@implementation EaseBubbleView (Track)
+
+
+
+static char _trackImage_;
+static char _trackTitleLabel_;
+static char _orderTitleLabel_;
+static char _trackPriceLabel_;
+static char _trackDescLable_;
+
+
+- (void)_setupConstraints
+{
+     //[self.marginConstraints removeAllObjects];
+    
+    //orderTitleLabel
+    NSLayoutConstraint *orderTitleMarginTopConstraint = [NSLayoutConstraint constraintWithItem:self.orderTitleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.backgroundImageView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:6];
+    
+    NSLayoutConstraint *orderTitleMarginLeftConstraint = [NSLayoutConstraint constraintWithItem:self.orderTitleLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.backgroundImageView attribute:NSLayoutAttributeRight multiplier:1.0 constant:6];
+    
+    [self.marginConstraints addObject:orderTitleMarginTopConstraint];
+    [self.marginConstraints addObject:orderTitleMarginLeftConstraint];
+    
+    //titlelabel
+    NSLayoutConstraint *titleMarginTopConstraint = [NSLayoutConstraint constraintWithItem:self.trackTitleLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.orderTitleLabel attribute:NSLayoutAttributeBottom multiplier:1.0 constant:6];
+    
+    NSLayoutConstraint *titleMarginLeftConstraint = [NSLayoutConstraint constraintWithItem:self.trackTitleLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.backgroundImageView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:6];
+    
+    [self.marginConstraints addObject:titleMarginTopConstraint];
+    [self.marginConstraints addObject:titleMarginLeftConstraint];
+    
+  
+    //track iamge view
+    NSLayoutConstraint *trackImageLeftConstraint = [NSLayoutConstraint constraintWithItem:self.trackImage attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.backgroundImageView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:6];
+    
+    NSLayoutConstraint *trackImageTopConstraint = [NSLayoutConstraint constraintWithItem:self.trackImage attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.trackTitleLabel attribute:NSLayoutAttributeBottom multiplier:1.0 constant:5];
+    
+    [self.marginConstraints addObject:trackImageLeftConstraint];
+    [self.marginConstraints addObject:trackImageTopConstraint];
+    
+    NSLayoutConstraint *trackImageHeightConstraint = [NSLayoutConstraint constraintWithItem:self.trackImage attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:56];
+    
+    NSLayoutConstraint *trackImageWidthConstraint = [NSLayoutConstraint constraintWithItem:self.trackImage attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:56];
+    
+    [self.trackImage addConstraint:trackImageHeightConstraint];
+    [self.trackImage addConstraint:trackImageWidthConstraint];
+    
+    //descLabel top对齐
+    
+    NSLayoutConstraint *descLabelLeftConstraint = [NSLayoutConstraint constraintWithItem:self.trackDescLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.trackImage attribute:NSLayoutAttributeRight multiplier:1.0 constant:3];
+    
+    NSLayoutConstraint *descLabelTopConstraint = [NSLayoutConstraint constraintWithItem:self.trackDescLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.trackImage attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+    
+    [self.marginConstraints addObject:descLabelLeftConstraint];
+    [self.marginConstraints addObject:descLabelTopConstraint];
+
+    //  priceLabel
+    NSLayoutConstraint *priceLabelLeftConstraint = [NSLayoutConstraint constraintWithItem:self.priceLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.trackImage attribute:NSLayoutAttributeRight multiplier:1.0 constant:3];
+    
+    NSLayoutConstraint *priceLabelTopConstraint = [NSLayoutConstraint constraintWithItem:self.priceLabel attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.trackDescLabel attribute:NSLayoutAttributeBottom multiplier:1.0 constant:10];
+    
+    [self.marginConstraints addObject:priceLabelLeftConstraint];
+    [self.marginConstraints addObject:priceLabelTopConstraint];
+    
+    
+    [self addConstraints:self.marginConstraints];
+    
+//    NSLayoutConstraint *backImageConstraint = [NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0f constant:260];
+//    
+//    [self.superview addConstraint:backImageConstraint];
+    
+    /*
+     UIView *backImageView = self.backgroundImageView;
+     NSArray *backgroundConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[backImageView]-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(backImageView)];
+     NSArray *backgroundConstraints2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[backImageView(==200)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(backImageView)];
+     
+     [self addConstraints:backgroundConstraints];
+     [self addConstraints:backgroundConstraints2];
+     */
+}
+
+#pragma mark - public
+
+- (void)setupTrackBubbleView
+{
+    self.trackImage = [UIImageView new];
+    [self.trackImage setImage:[UIImage imageNamed:@"imageDownloadFail"]];
+    [self.backgroundImageView addSubview:self.trackImage];
+    
+    self.trackTitleLabel = [UILabel new];
+    self.trackTitleLabel.font = [UIFont systemFontOfSize:14.0f];
+//    self.trackTitleLabel.textColor = [UIColor whiteColor];
+    [self.backgroundImageView addSubview:self.trackTitleLabel];
+    
+    self.orderTitleLabel = [UILabel new];
+    self.orderTitleLabel.font = [UIFont systemFontOfSize:14.0f];
+//    self.orderTitleLabel.textColor = [UIColor whiteColor];
+    [self.backgroundImageView addSubview:self.orderTitleLabel];
+    
+    self.priceLabel = [UILabel new];
+    self.priceLabel.font = [UIFont systemFontOfSize:12.0f];
+//    self.priceLabel.textColor = rp_hexColor(rp_textColorGray);
+    self.priceLabel.textColor = [UIColor redColor];
+    [self.backgroundImageView addSubview:self.priceLabel];
+    
+    self.trackDescLabel = [UILabel new];
+    self.trackDescLabel.font = [UIFont systemFontOfSize:12.0f];
+//    self.trackDescLabel.textColor = rp_hexColor(0xf14e46);
+    [self.backgroundImageView addSubview:self.trackDescLabel];
+    
+    
+    [self _setupConstraints];
+    
+}
+
+- (void)updateTrackMargin:(UIEdgeInsets)margin
+{
+    if (_margin.top == margin.top && _margin.bottom == margin.bottom && _margin.left == margin.left && _margin.right == margin.right) {
+        return;
+    }
+    _margin = margin;
+    
+    [self removeConstraints:self.marginConstraints];
+    [self _setupConstraints];
+}
+
+#pragma mark - propertys
+
+- (void)setTrackImage:(UIImageView *)trackImage
+{
+    objc_setAssociatedObject(self, &_trackImage_, trackImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIImageView *)trackImage
+{
+    return objc_getAssociatedObject(self, &_trackImage_);
+}
+
+- (void)setTrackTitleLabel:(UILabel *)trackTitleLabel
+{
+    objc_setAssociatedObject(self, &_trackTitleLabel_, trackTitleLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UILabel *)trackTitleLabel
+{
+    return objc_getAssociatedObject(self, &_trackTitleLabel_);
+}
+
+- (void)setOrderTitleLabel:(UILabel *)orderTitleLabel
+{
+    objc_setAssociatedObject(self, &_orderTitleLabel_, orderTitleLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UILabel *)orderTitleLabel
+{
+    return objc_getAssociatedObject(self, &_orderTitleLabel_);
+}
+
+
+
+- (void)setPriceLabel:(UILabel *)priceLabel
+{
+    objc_setAssociatedObject(self, &_trackPriceLabel_, priceLabel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UILabel *)priceLabel
+{
+    return objc_getAssociatedObject(self, &_trackPriceLabel_);
+}
+
+- (void)setTrackDescLabel:(UILabel *)descLable
+{
+    objc_setAssociatedObject(self, &_trackDescLable_, descLable, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UILabel *)trackDescLabel
+{
+    return objc_getAssociatedObject(self, &_trackDescLable_);
+}
+
+@end
