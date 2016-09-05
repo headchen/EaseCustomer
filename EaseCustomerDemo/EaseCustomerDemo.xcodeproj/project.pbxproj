@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E08978D61D7D24B50023AB06 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = E08978D51D7D24B50023AB06 /* readme.md */; };
 		E0F335D21D798CE700CDB067 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F335D11D798CE700CDB067 /* main.m */; };
 		E0F335D51D798CE700CDB067 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F335D41D798CE700CDB067 /* AppDelegate.m */; };
 		E0F335D81D798CE700CDB067 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F335D71D798CE700CDB067 /* ViewController.m */; };
@@ -339,10 +340,10 @@
 		E0F339DB1D799C3000CDB067 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F339DA1D799C3000CDB067 /* MobileCoreServices.framework */; };
 		E0F339DD1D799C6800CDB067 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F339DC1D799C6800CDB067 /* CoreMedia.framework */; };
 		E0F339E11D799CD100CDB067 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F339E01D799CD100CDB067 /* SystemConfiguration.framework */; };
-		E0F339E31D799F4500CDB067 /* readme.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E0F339E21D799F4500CDB067 /* readme.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E08978D51D7D24B50023AB06 /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		E0F335CD1D798CE700CDB067 /* EaseCustomerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EaseCustomerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F335D11D798CE700CDB067 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E0F335D31D798CE700CDB067 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -937,7 +938,6 @@
 		E0F339DC1D799C6800CDB067 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E0F339DE1D799C7E00CDB067 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		E0F339E01D799CD100CDB067 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		E0F339E21D799F4500CDB067 /* readme.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = readme.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1012,11 +1012,11 @@
 		E0F335EA1D798D8C00CDB067 /* EaseCustomer */ = {
 			isa = PBXGroup;
 			children = (
+				E08978D51D7D24B50023AB06 /* readme.md */,
 				E0F335EB1D798D8C00CDB067 /* ChatDemo-UI3.0 */,
 				E0F337121D798D8C00CDB067 /* Customer */,
 				E0F337311D798D8C00CDB067 /* EaseUI */,
 				E0F338561D798D8C00CDB067 /* HyphenateFullSDK */,
-				E0F339E21D799F4500CDB067 /* readme.rtf */,
 			);
 			name = EaseCustomer;
 			path = ../EaseCustomer;
@@ -2421,7 +2421,6 @@
 				E0F3393C1D798D8C00CDB067 /* icon_star_select.png in Resources */,
 				E0F3391B1D798D8C00CDB067 /* group_detail@2x.png in Resources */,
 				E0F338E51D798D8C00CDB067 /* messageSendFail@2x.png in Resources */,
-				E0F339E31D799F4500CDB067 /* readme.rtf in Resources */,
 				E0F338DE1D798D8C00CDB067 /* chat_location_detail_disclosureHL.png in Resources */,
 				E0F339221D798D8C00CDB067 /* group_participant_add@2x.png in Resources */,
 				E0F3392E1D798D8C00CDB067 /* tabbar_contactsHL.png in Resources */,
@@ -2551,6 +2550,7 @@
 				E0F339B61D798D8C00CDB067 /* EaseImageView.m in Sources */,
 				E0F339981D798D8C00CDB067 /* UIViewController+HUD.m in Sources */,
 				E0F335D51D798CE700CDB067 /* AppDelegate.m in Sources */,
+				E08978D61D7D24B50023AB06 /* readme.md in Sources */,
 				E0F3393E1D798D8C00CDB067 /* CustomerChatViewController.m in Sources */,
 				E0F339701D798D8C00CDB067 /* MWZoomingScrollView.m in Sources */,
 				E0F339851D798D8C00CDB067 /* PSTCollectionViewController.m in Sources */,
