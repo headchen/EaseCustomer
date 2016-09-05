@@ -56,6 +56,9 @@
 - (IBAction)doTestCustomer:(id)sender {
     CustomerChatViewController *cusV = [[CustomerChatViewController alloc] initWithKfInfo:[[ZgKfInfo sharedInfo] createDebugInfo] ];
     
-    [[self navigationController] pushViewController:cusV animated:YES];
+  //  [[self navigationController] pushViewController:cusV animated:YES];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:cusV];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 @end
