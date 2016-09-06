@@ -131,7 +131,7 @@ static ChatDemoHelper *helper = nil;
             }
             
             if (weakself.mainVC) {
-                [weakself.mainVC setupUnreadMessageCount];
+//                [weakself.mainVC setupUnreadMessageCount];
             }
         });
     });
@@ -142,7 +142,7 @@ static ChatDemoHelper *helper = nil;
 // 网络状态变化回调
 - (void)didConnectionStateChanged:(EMConnectionState)connectionState
 {
-    [self.mainVC networkChanged:connectionState];
+ //   [self.mainVC networkChanged:connectionState];
 }
 
 - (void)didAutoLoginWithError:(EMError *)error
@@ -200,7 +200,7 @@ static ChatDemoHelper *helper = nil;
 - (void)didUpdateConversationList:(NSArray *)aConversationList
 {
     if (self.mainVC) {
-        [_mainVC setupUnreadMessageCount];
+   //     [_mainVC setupUnreadMessageCount];
     }
     
     if (self.conversationListVC) {
@@ -224,20 +224,20 @@ static ChatDemoHelper *helper = nil;
         
         if (needShowNotification) {
 #if !TARGET_IPHONE_SIMULATOR
-            UIApplicationState state = [[UIApplication sharedApplication] applicationState];
-            switch (state) {
-                case UIApplicationStateActive:
-                    [self.mainVC playSoundAndVibration];
-                    break;
-                case UIApplicationStateInactive:
-                    [self.mainVC playSoundAndVibration];
-                    break;
-                case UIApplicationStateBackground:
-                    [self.mainVC showNotificationWithMessage:message];
-                    break;
-                default:
-                    break;
-            }
+//            UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+//            switch (state) {
+//                case UIApplicationStateActive:
+//                    [self.mainVC playSoundAndVibration];
+//                    break;
+//                case UIApplicationStateInactive:
+//                    [self.mainVC playSoundAndVibration];
+//                    break;
+//                case UIApplicationStateBackground:
+//                    [self.mainVC showNotificationWithMessage:message];
+//                    break;
+//                default:
+//                    break;
+//            }
 #endif
         }
         
@@ -256,7 +256,7 @@ static ChatDemoHelper *helper = nil;
             }
             
             if (self.mainVC) {
-                [_mainVC setupUnreadMessageCount];
+ //               [_mainVC setupUnreadMessageCount];
             }
             return;
         }
@@ -272,7 +272,7 @@ static ChatDemoHelper *helper = nil;
         }
         
         if (self.mainVC) {
-            [_mainVC setupUnreadMessageCount];
+ //           [_mainVC setupUnreadMessageCount];
         }
     }
 }
@@ -332,9 +332,9 @@ static ChatDemoHelper *helper = nil;
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":aGroup.subject, @"groupId":aGroup.groupId, @"username":aApplicant, @"groupname":aGroup.subject, @"applyMessage":aReason, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleJoinGroup]}];
     [[ApplyViewController shareController] addNewApply:dic];
     if (self.mainVC) {
-        [self.mainVC setupUntreatedApplyCount];
+ //       [self.mainVC setupUntreatedApplyCount];
 #if !TARGET_IPHONE_SIMULATOR
-        [self.mainVC playSoundAndVibration];
+//        [self.mainVC playSoundAndVibration];
 #endif
     }
     
@@ -379,9 +379,9 @@ static ChatDemoHelper *helper = nil;
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"", @"groupId":aGroupId, @"username":aInviter, @"groupname":@"", @"applyMessage":aMessage, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleGroupInvitation]}];
     [[ApplyViewController shareController] addNewApply:dic];
     if (self.mainVC) {
-        [self.mainVC setupUntreatedApplyCount];
+//        [self.mainVC setupUntreatedApplyCount];
 #if !TARGET_IPHONE_SIMULATOR
-        [self.mainVC playSoundAndVibration];
+//        [self.mainVC playSoundAndVibration];
 #endif
     }
     
@@ -448,9 +448,9 @@ static ChatDemoHelper *helper = nil;
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":aUsername, @"username":aUsername, @"applyMessage":aMessage, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleFriend]}];
     [[ApplyViewController shareController] addNewApply:dic];
     if (self.mainVC) {
-        [self.mainVC setupUntreatedApplyCount];
+  //      [self.mainVC setupUntreatedApplyCount];
 #if !TARGET_IPHONE_SIMULATOR
-        [self.mainVC playSoundAndVibration];
+//        [self.mainVC playSoundAndVibration];
         
         BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
         if (!isAppActivity) {
